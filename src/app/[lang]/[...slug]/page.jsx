@@ -115,7 +115,7 @@ export async function generateStaticParams({ params }) {
     return [];
   }
 
-  
+
 
   const slugs = users.map((user) => [user.page_slug]);
   const paths = slugs.map((slug) => ({ slug, lang }));
@@ -137,6 +137,7 @@ export async function generateStaticParams({ params }) {
   }
   return [...paths, ...coursePaths];
 }
+
 
 // export async function generateMetadata({ params }) {
 
