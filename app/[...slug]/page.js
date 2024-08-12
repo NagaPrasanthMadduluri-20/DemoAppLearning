@@ -1,10 +1,8 @@
-// demo practice code
-// import CategoryCountry from "@/app/components/CategoryCountry";
-// import { countries, courses, cities, categories } from "@/data/categories"; 
 import { categoriesData } from"@/data/categories"; 
-import { getUserById, getUsers } from "@/services";
+import { getCountryHome, getUserById, getUsers } from "@/services";
 import CourseScreen from "./screens/CourseScreen";
 import CategoryScreen from "./screens/CategoryScreen";
+import CountryHome from "./screens/CountryHome";
 
 export async function generateStaticParams() {
   const params = [];
@@ -49,14 +47,14 @@ export default async function Page({ params }) {
   const lang = isCountrySlugPresent ? pathParts[0] : null;
 
   console.log("pathparts", pathParts);
-  // Extract slugParts based on conditions
-  let slug;
-  if (isCountrySlugPresent) {
-    slug = [pathParts[1]].join("/");
-  }
-  // if (isCountrySlugPresent && pathParts.length > 1) {
-  //   slug = pathParts[1];
-  // }
+
+   // Extract slug based on conditions
+   let slug;
+   if (isCountrySlugPresent) {
+     slug = pathParts[1];
+   } else {
+     slug = pathParts[0]; // If no language, the first part is the slug
+   }
 
   // Determine city
   const city =
@@ -68,34 +66,18 @@ export default async function Page({ params }) {
   // Check if the slug is valid (course or category)
   const isValidSlug =
   categoriesData?.courses?.some((course) => course.slug === slug) ||
-  categoriesData?.categories?.some((category) => category.slug === slug);
+  categoriesData?.categories?.some((category) => category.slug === slug) ||
+  categoriesData?.countries?.some((country) => country.slug === slug);
 
   if (!isValidSlug) {
     return <div>404 - Page Not Found</div>;
   }
 
-  // Get all valid params from generateStaticParams
-  // const validParams = await generateStaticParams();
-
-  // // Function to check if the current params match any valid params
-  // const isValidParam = (currentParams) => {
-  //   return validParams.some(
-  //     (validParam) =>
-  //       JSON.stringify(validParam.slug) === JSON.stringify(currentParams)
-  //   );
-  // };
-
-  // // Construct the current params array
-  // const currentParams = lang ? [lang, ...slug.split("/")] : slug?.split("/");
-  // if (city) currentParams.push(city);
-  // console.log("current params", currentParams);
-  // // Check if the current params are valid
-  // if (lang !== i18n.defaultLocale && !isValidParam(currentParams)) {
-  //   return <div>404 - Page Not Found</div>;
-  // }
 
   const isCourse = categoriesData?.courses.some((course) => course.slug === slug);
   const isCategory = categoriesData?.categories.some((category) => category.slug === slug);
+  const isCountry = categoriesData?.countries.some((country) => country.slug === slug);
+   console.log("isCourse", isCourse);
 
   let data, error;
 
@@ -103,6 +85,8 @@ export default async function Page({ params }) {
     ({ CourseData: data, error } = await getUserById(slug, lang, city));
   } else if (isCategory) {
     ({ CategoryData: data, error } = await getUsers(slug, lang));
+  } else if (isCountry){
+    ({ CountryHome: data, error } = await getCountryHome(lang));
   }
   //   console.log("isCourse:", isCourse);
   //   console.log("isCategory:", isCategory);
@@ -114,6 +98,16 @@ export default async function Page({ params }) {
     console.error("Error fetching data:", error);
     return <div>Error loading page</div>;
   }
+   // If no data found with language, try fetching without language
+   if (!data && lang) {
+    if (isCourse) {
+      ({ CourseData: data, error } = await getUserById(slug, null, city));
+    } else if (isCategory) {
+      ({ CategoryData: data, error } = await getUsers(slug, null));
+    } 
+  }
+
+  
 
   if (!data) {
     console.log("No data found for this slug and language");
@@ -124,6 +118,8 @@ export default async function Page({ params }) {
     return <CourseScreen data={data} />;
   } else if (isCategory) {
     return <CategoryScreen data={data} />;
+  } else if (isCountry) {
+    return <CountryHome data={data}/>
   }
 }
 // const params = [];
@@ -192,3 +188,25 @@ export default async function Page({ params }) {
 
 //   return [...categoryPaths, ...coursePaths];
 // }
+
+
+
+  // Get all valid params from generateStaticParams
+  // const validParams = await generateStaticParams();
+
+  // // Function to check if the current params match any valid params
+  // const isValidParam = (currentParams) => {
+  //   return validParams.some(
+  //     (validParam) =>
+  //       JSON.stringify(validParam.slug) === JSON.stringify(currentParams)
+  //   );
+  // };
+
+  // // Construct the current params array
+  // const currentParams = lang ? [lang, ...slug.split("/")] : slug?.split("/");
+  // if (city) currentParams.push(city);
+  // console.log("current params", currentParams);
+  // // Check if the current params are valid
+  // if (lang !== i18n.defaultLocale && !isValidParam(currentParams)) {
+  //   return <div>404 - Page Not Found</div>;
+  // }

@@ -133,7 +133,7 @@ const templateMapping = {
 };
 
 const CourseScreen = ({ data }) => {
-  console.log("data",data);
+ // console.log("data",data);
   const renderTemplate = (template, content) => {
     const TemplateComponent = templateMapping[template];
     return TemplateComponent ? (

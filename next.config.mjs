@@ -1,7 +1,3 @@
-import createNextIntlPlugin from "next-intl/plugin";
-
-const withNextIntl = createNextIntlPlugin();
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -20,11 +16,11 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable', // Cache for 1 year
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable", // Cache for 1 year
           },
         ],
       },
@@ -32,4 +28,4 @@ const nextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+export default nextConfig;

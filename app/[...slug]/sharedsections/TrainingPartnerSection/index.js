@@ -20,91 +20,91 @@ const data = {
     cardData: [
       {
         src:
-          "../training-partner-logo/intel.svg",
+          "/training-partner-logo/intel.svg",
         alt: "Intel",
         title: "Intel",
       },
       {
         src:
-          "../training-partner-logo/amazon.svg",
+          "/training-partner-logo/amazon.svg",
         alt: "Amazon",
         title: "Amazon",
       },
       {
         src:
-          "../training-partner-logo/verizon.svg",
+          "/training-partner-logo/verizon.svg",
         alt: "verizon",
         title: "verizon",
       },
       {
         src:
-          "../training-partner-logo/qatar.svg",
+          "/training-partner-logo/qatar.svg",
         alt: "Qatar Airways",
         title: "Qatar Airways",
       },
       {
         src:
-          "../training-partner-logo/airbus.svg",
+          "/training-partner-logo/airbus.svg",
         alt: "Airbus",
         title: "Airbus",
       },
       {
         src:
-          "../training-partner-logo/king.svg",
+          "/training-partner-logo/king.svg",
         alt: "King",
         title: "King",
       },
       {
         src:
-          "../training-partner-logo/bank-of-america.svg",
+          "/training-partner-logo/bank-of-america.svg",
         alt: "Bank Of America",
         title: "Bank Of America",
       },
       {
         src:
-          "../training-partner-logo/infosys.svg",
+          "/training-partner-logo/infosys.svg",
         alt: "Infosys",
         title: "Infosys",
       },
       {
         src:
-          "../training-partner-logo/ibm.svg",
+          "/training-partner-logo/ibm.svg",
         alt: "IBM",
         title: "IBM",
       },
       {
         src:
-          "../training-partner-logo/mobily.svg",
+          "/training-partner-logo/mobily.svg",
         alt: "Mobily",
         title: "Mobily",
       },
       {
         src:
-          "../training-partner-logo/etisalat.svg",
+          "/training-partner-logo/etisalat.svg",
         alt: "Etisalat",
         title: "Etisalat",
       },
       {
         src:
-          "../training-partner-logo/ge.svg",
+          "/training-partner-logo/ge.svg",
         alt: "General Electric - GE",
         title: "General Electric - GE",
       },
       {
         src:
-          "../training-partner-logo/boeing.svg",
+          "/training-partner-logo/boeing.svg",
         alt: "Boeing",
         title: "Boeing",
       },
       {
         src:
-          "../training-partner-logo/Swift.svg",
+          "/training-partner-logo/Swift.svg",
         alt: "Swift",
         title: "Swift",
       },
       {
         src:
-          "../training-partner-logo/Total.svg",
+          "/training-partner-logo/Total.svg",
         alt: "Total",
         title: "Total",
       }

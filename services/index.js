@@ -1,19 +1,19 @@
-import { defaultLocale } from "@/i18n-config";
+
 
 
 export async function getUsers(slug, lang) {
   console.log("getUsers called with slug:", slug, "and lang:", lang);
   try {
     const endpoint =
-      lang === defaultLocale
-        ? `https://stagingalpha.invensislearning.com/api/get-dynamic-page-details/GENERIC%20CATEGORY/${slug}/?geoLocation=&current_url=http://localhost:9091/${slug}/`
-        : `https://stagingalpha.invensislearning.com/api/get-dynamic-page-details/CATEGORY/${slug}/${lang}?geoLocation=${lang}&current_url=http://localhost:9091/${lang}/${slug}/`;
+      lang === null
+        ? `https://stagingalpha.invensislearning.com/api/get-dynamic-page-details/GENERIC%20CATEGORY/${slug}/?geoLocation=&current_url=http://localhost:9091/${slug}/ ${console.log("langnull")}`
+        : `https://stagingalpha.invensislearning.com/api/get-dynamic-page-details/CATEGORY/${slug}/${lang}?geoLocation=${lang}&current_url=http://localhost:9091/${lang}/${slug}/  ${console.log("langisprsent")}`;
     const res = await fetch(endpoint);
     if (!res.ok) {
       throw new Error(`HTTP error ${res.status}`);
     }
     const contentType = res.headers.get("Content-Type");
-    console.log(`Content-Type: ${contentType}`);
+    //console.log(`Content-Type: ${contentType}`);
     if (!contentType || !contentType.includes("application/json")) {
       throw new Error("Invalid response type");
     }
@@ -45,10 +45,10 @@ export async function getUserById(slug, lang, city) {
     if (slug && city && lang) {
       // Case: Course City (e.g., domain/us/course-slug/city)
       endpoint = `https://stagingalpha.invensislearning.com/api/get-dynamic-page-details/COURSE%20CITY/${slug}/${lang}/${city}?geoLocation=${lang}&current_url=http://localhost:9091/${lang}/${slug}/${city}/`;
-    } else if (slug && lang) {
+    } else if (slug || lang) {
       // Case: Course Country (e.g., domain/us/course-slug)
       endpoint =
-        lang === defaultLocale
+        lang === null
           ? `https://stagingalpha.invensislearning.com/api/get-dynamic-page-details/GENERIC%20COURSE/${slug}?current_url=http://localhost:9091/${slug}/`
           : `https://stagingalpha.invensislearning.com/api/get-dynamic-page-details/COURSE%20COUNTRY/${slug}/${lang}?geoLocation=${lang}&current_url=http://localhost:9091/${lang}/${slug}/`;
     }
@@ -62,5 +62,39 @@ export async function getUserById(slug, lang, city) {
     return { CourseData: data, error: null };
   } catch (error) {
     return { CourseData: null, error: error.message || "Failed to fetch user" };
+  }
+}
+
+
+//https://stagingalpha.invensislearning.com/api/get-static-page-details/COUNTRY HOME/${lang}&current_url=http://localhost:9091/${lang}/
+export async function getCountryHome(lang) {
+  console.log("getCountryHome called with lang:", lang);
+  try {
+    const endpoint =
+      lang === null
+        ? `https://stagingalpha.invensislearning.com/api/get-static-page-details/HOME`
+        : `https://stagingalpha.invensislearning.com/api/get-static-page-details/COUNTRY%20HOME/${lang}`;
+    console.log("endpoint", endpoint);
+    const res = await fetch(endpoint);
+  
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`);
+    }
+    const contentType = res.headers.get("Content-Type");
+    //console.log(`Content-Type: ${contentType}`);
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error("Invalid response type");
+    }
+    const data = await res.json();
+    console.log("category", data);
+    if (!data) {
+      throw new Error("Failed to fetch users");
+    }
+    return { CountryHome: data, error: null };
+  } catch (error) {
+    return {
+      CountryHome: null,
+      error: error.message || "Failed to fetch users",
+    };
   }
 }

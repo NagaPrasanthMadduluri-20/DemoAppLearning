@@ -1,3 +1,0 @@
-export const locales = ["us","al","dz","ao","ar","am","au","at","az","bs","bh","bb","be","bm","bw","br","bn","bg","kh","cm","ca","cl","cn","co","cr","hr","cy","cz","dk","do","ec","eg","sv","ee","fj","fi","fr","ge","de","gh","gr","gt","gy","hk","hu","is","in","id","ie","il","it","ci","jm","jp","jo","kz","ke","kw","lv","lb","ly","lt","lu","mk","mw","my","mv","mt","mu","mx","md","mn","ma","mz","na","nl","nz","ng","no","om","pa","ph","pl","pt","pr","qa","ro","ru","rw","sa","sn","rs","sg","sk","si","za","kr","es","sd","se","ch","tw","tj","tz","th","tt","tn","tr","ug","ua","ae","gb","uy","uz","vn","zm","zw"];
-export const defaultLocale = 'us';
-
