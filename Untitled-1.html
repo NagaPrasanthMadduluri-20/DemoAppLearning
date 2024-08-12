@@ -1,0 +1,21 @@
+<DotNavigation
+        slides={testimonialdata}
+        currentSlide={currentSlide}
+        onDotClick={(index) => {
+          api?.scrollTo(index);
+        }}
+      />
+
+const DotNavigation = ({ slides, currentSlide, onDotClick }) => (
+  <div className="flex justify-center mt-4">
+    {slides.map((_, index) => (
+      <button
+        key={index}
+        className={`w-3 h-3 mx-1 rounded-full ${
+          currentSlide === index ? "bg-secondary" : "bg-gray-300"
+        }`}
+        onClick={() => onDotClick(index)}
+      />
+    ))}
+  </div>
+);

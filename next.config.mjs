@@ -1,9 +1,35 @@
-// next.config.js
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        runtime: 'nodejs',
+  images: {
+    remotePatterns: [
+      {
+        hostname: "www.invensislearning.com",
       },
-  };
-  
-  export default nextConfig;
+      {
+        hostname: "stagingalpha.invensislearning.com",
+      },
+      {
+        hostname: "alpha.invensislearning.com",
+      },
+    ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable', // Cache for 1 year
+          },
+        ],
+      },
+    ];
+  },
+};
+
+export default withNextIntl(nextConfig);
