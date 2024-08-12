@@ -143,9 +143,9 @@ const CourseScreen = ({ data }) => {
 
   const { pageContents } = data;
 
-  const twoColumnContent = pageContents.filter(content => twoColumnComponents.includes(content.template));
-  const firstColumnContent = pageContents.filter(content => firstColumnComponents.includes(content.template));
-  const otherContent = pageContents.filter(content => otherColumnComponents.includes(content.template));
+  const twoColumnContent = pageContents?.filter(content => twoColumnComponents.includes(content.template));
+  const firstColumnContent = pageContents?.filter(content => firstColumnComponents.includes(content.template));
+  const otherContent = pageContents?.filter(content => otherColumnComponents.includes(content.template));
 
   return (
     <>

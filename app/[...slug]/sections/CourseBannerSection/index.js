@@ -12,10 +12,10 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
   const { contents } = CourseBannerData;
   const { page_name } = additionalData;
 
-  const imageAccreditations = contents.categorybanners.filter(
+  const imageAccreditations = contents.categorybanners?.filter(
     (item) => item.instuctor === "image"
   );
-  const textAccreditations = contents.categorybanners.filter(
+  const textAccreditations = contents.categorybanners?.filter(
     (item) => item.instuctor === "text"
   );
   return (
