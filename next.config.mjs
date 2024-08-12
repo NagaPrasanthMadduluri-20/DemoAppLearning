@@ -2,8 +2,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
-      runtime: 'edge',
-    },
+        runtime: 'nodejs',
+      },
   };
   
   export default nextConfig;

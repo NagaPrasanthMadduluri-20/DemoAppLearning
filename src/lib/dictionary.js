@@ -8,4 +8,4 @@ const dictionaries = {
   ly: () => import('../dictionaries/ly.json').then((module) => module.default),
 }
  
-export const getDictionary = async (locale) => dictionaries[locale]()
+export const getDictionary = async (locale) => dictionaries[locale]();
