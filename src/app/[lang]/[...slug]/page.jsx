@@ -107,36 +107,36 @@ import { getUserById, getUsers } from "@/lib/users";
 import Course from "../components/user/Course";
 import Category from "../components/users/Category";
 
-export async function generateStaticParams({ params }) {
-  const { lang } = params;
-  const { users } = await getUsers("", lang);
+// export async function generateStaticParams({ params }) {
+//   const { lang } = params;
+//   const { users } = await getUsers("", lang);
 
-  if (!users) {
-    return [];
-  }
+//   if (!users) {
+//     return [];
+//   }
 
 
 
-  const slugs = users.map((user) => [user.page_slug]);
-  const paths = slugs.map((slug) => ({ slug, lang }));
+//   const slugs = users.map((user) => [user.page_slug]);
+//   const paths = slugs.map((slug) => ({ slug, lang }));
 
-  const coursePaths = [];
-  for (const user of users) {
-    const { CategoryCourseLevel } = user;
-    Object.entries(CategoryCourseLevel || {}).flatMap(([level, courses]) =>
-       (courses || []).map((course) => {
-        if (course.course_button_url) {
-          const courseSlug = course.course_button_url
-            .split("/")
-            .slice(1)
-            .join("/");
-          coursePaths.push({ slug: [courseSlug], lang, courseData: course });
-        }
-      })
-    );
-  }
-  return [...paths, ...coursePaths];
-}
+//   const coursePaths = [];
+//   for (const user of users) {
+//     const { CategoryCourseLevel } = user;
+//     Object.entries(CategoryCourseLevel || {}).flatMap(([level, courses]) =>
+//        (courses || []).map((course) => {
+//         if (course.course_button_url) {
+//           const courseSlug = course.course_button_url
+//             .split("/")
+//             .slice(1)
+//             .join("/");
+//           coursePaths.push({ slug: [courseSlug], lang, courseData: course });
+//         }
+//       })
+//     );
+//   }
+//   return [...paths, ...coursePaths];
+// }
 
 
 // export async function generateMetadata({ params }) {
