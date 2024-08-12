@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "category": "categories"
+    },
+    "page": {
+      "home": {
+        "title": "Welcome to NextJs i18n - india",
+        "description": "Internationalization in NextJs 13 App router - india"
+      },
+      "about": {
+        "title": "About Us - india",
+        "description": "This is the about page- courses"
+      },
+      "category":{
+        "title": "Dyanamic category page - india",
+        "page_name": "-courses",
+        "description": "These are all the Categories  - courses"
+      }
+    }
+  }

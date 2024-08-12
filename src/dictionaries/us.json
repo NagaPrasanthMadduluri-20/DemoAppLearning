@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "category": "categories"
+    },
+    "page": {
+      "home": {
+        "title": "Welcome to NextJs i18n in united states",
+        "description": "Internationalization in NextJs 13 App router - united states"
+      },
+      "about": {
+        "title": "About Us - united states",
+        "description": "This is the about page - united states"
+      },
+      "category":{
+        "title": "Dyanamic category page - united states",
+        "page_name": "-in United States",
+        "description": "These are all the Categories  - united states"
+      }
+    }
+  }

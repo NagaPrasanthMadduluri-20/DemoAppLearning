@@ -1,0 +1,22 @@
+{
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "category": "categories"
+    },
+    "page": {
+      "home": {
+        "title": "Welcome to NextJs i18n in Rawanda",
+        "description": "Internationalization in NextJs 13 App router - Rawanda"
+      },
+      "about": {
+        "title": "About Us - Rawanda",
+        "description": "This is the about page - Rawanda"
+      },
+      "category":{
+        "title": "Dyanamic category page - Rawanda",
+        "page_name": "-in Rawanda",
+        "description": "These are all the Categories  - Rawanda"
+      }
+    }
+  }
